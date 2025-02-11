@@ -1,0 +1,41 @@
+
+body{
+    background-color: #1F2739;
+    font-family: 'Open Sans', sans-serif;
+    color:whitesmoke;
+    font-size: 20px;
+    text-align:center;
+    
+}
+h1{
+    color: rgb(50, 205, 197);
+    width: 80%;
+    font-size: 60px;
+    text-align: center;
+    margin:0 auto;
+    
+    
+    
+}
+
+table{
+    border-color: #1F2739;
+    background-color: #1F2739;;
+    font-family:Lucida Sans Unicode;
+    margin: 0 auto;
+    width: 80%;
+    font-size: 18px;
+}
+th{
+    background-color:rgb(50, 205, 197);
+    color:#185875;
+    border: 0;
+    padding: 25px;
+}
+
+td{
+    background-color: #185875;
+    color:whitesmoke;
+    text-align:center;
+    padding: 25px;
+}
