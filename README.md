@@ -1,4 +1,4 @@
-💻 Curso de HTML y CSS - Ejercicios y Prácticas
+💻 HTML y CSS - Ejercicios y Prácticas
 
 🔧 Tecnologías utilizadas
 
