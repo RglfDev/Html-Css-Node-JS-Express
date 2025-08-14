@@ -1,0 +1,88 @@
+table{
+    size: 200px;
+    padding: 0%;
+}
+
+#TableTitle {
+    margin-top: 10px;
+    margin-bottom: 200px;
+    height: 100px;
+    text-align: center;
+    font-size: 35px;
+    background-color: #242C57;
+    color: #FFE5FA;
+}
+#TitleDesc{
+    text-align: right;
+    font-size: 20px;
+    height: 40px;
+    background-color: #242C57;
+    color: #E8AD84;
+}
+
+#tabla{
+    table-layout: fixed;
+    width: 100%;
+    text-align: center;
+    
+}
+
+#tabla td{
+    border-top: 1px solid #C1A6DE;
+    border-bottom: 1px solid #C1A6DE;
+}
+
+
+#buttons{
+    table-layout: fixed;
+    width: 100%;
+    height: 30px;
+    font-size: 30px;
+    border-collapse: collapse;
+    
+}
+#buttons td{
+    padding-top: 20px;
+    padding-bottom: 20px;
+    width: 100%;
+}
+
+#buttons td button{
+    width: 100%;
+    height: 30px;
+    font-size: 17px;
+    color: #E8AD84;
+    background-color: #242C57;
+}
+
+#LoremTitle{
+    height: 100px;
+    background-color: #FFC7F5 ;
+    color: #242C57;
+    font-size: 30px;
+}
+
+#LoremDesc td{
+    font-size: 20px;
+    padding-bottom: 20px;
+    padding-top: 20px;
+    background-color: #FFC7F5;
+    
+}
+
+#InfoButtons td{
+    height: 30px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    background-color:#FFC7F5 ;
+}
+
+#InfoButtons td button{
+    width: 30%;
+    height: 30px;
+    font-size: 17px;
+    color: white;
+    background-color: #242C57;
+    
+}
+
