@@ -54,7 +54,6 @@ PracticaTres/
 - Flexbox  
 - Media Queries (`@media`)  
 - Google Fonts (Raleway)  
-- Normalize.css  
 
 ---
 
