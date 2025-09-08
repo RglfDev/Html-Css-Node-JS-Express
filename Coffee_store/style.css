@@ -1,10 +1,8 @@
-* {
+*,
+*::before,
+*::after {
     margin: 0;
     padding: 0;
-    font-family: Arial, sans-serif;
-}
-
-*, *::before, *::after {
     box-sizing: border-box;
 }
 
@@ -16,7 +14,9 @@ body {
      overflow-x: hidden;
      overflow-y: scroll;
      padding: 0 auto;
+     font-family: 'Lexend', sans-serif;
 }
+
 
 
 /* Estilos de menú*/
@@ -43,17 +43,20 @@ body {
     width: 7em;
     border: 0px;
     flex-shrink: 1;
+    font-family: inherit;
 }
 
 .btnMenu{
     background-color: transparent;
     margin-bottom: 25px;
+    font-family: inherit;
 }
 
 .btnMenu:hover{
     background-color: #3c291c;
     color: white;
     border-radius: 10px;
+    font-family: inherit;
 }
 
 /*Estilos de cada producto*/
@@ -84,6 +87,7 @@ body {
     align-items: center;
     gap: 20px;
     box-sizing: border-box;
+    font-family: inherit;
 }
 
 .coffeeBtn{
@@ -91,6 +95,7 @@ body {
     display: flex;
     flex-direction: row;
     justify-content:space-evenly;
+    
 }
 
 .btnDown{
@@ -100,7 +105,10 @@ body {
     background-color: #CB7846;
     color: white;
     border-radius: 10px;
+    font-family: inherit;
 }
+
+
 
 .coffeeImg{
     width: 100%;
@@ -109,11 +117,56 @@ body {
     border-radius: 20px;
 }
 
+
+/** Cesta de compra */
 .myList{
+    display:none;
+    grid-template-rows: auto auto;    
+    align-items: start;
+    justify-items: center;            
+    align-self: start;                
+    background-color: #d1ab93;
+    text-align: center;
+    border: 1px solid #d1ab93;
+    border-radius: 20px;
+    padding: 10px;
+}
+
+.myList.show {
+    display: grid;
+}
+.myList h2{
+    font-size: 2rem;
+}
+
+.list{
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    background-color: aqua;
+    width: 200px;
+    gap: 10px;
+}
+
+.product{
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    justify-items: center;
+    gap: 10px;
+}
+
+.nameTotal{
+    font-size: 1.5rem;
+}
+
+
+
+.listBtn{
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background-color: #CB7846;
+    color: white;
+    font-family: inherit;
+    border: 0px;
 }
 
 
@@ -124,4 +177,12 @@ body {
     height: 100px;
     text-align: center;
     line-height: 100px;
+}
+
+
+
+.btnDown:hover, .listBtn:hover{
+    background-color: #ff6200;
+    color: white;
+    
 }
