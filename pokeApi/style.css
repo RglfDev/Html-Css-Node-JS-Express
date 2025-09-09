@@ -1,0 +1,122 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+@font-face{
+    font-family:"poke-font";
+    src:url("./tip/Pokemon\ X\ and\ Y.ttf")
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    min-height: 100hv;
+        
+}
+
+.container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    font-family: "poke-font";
+}
+
+
+.header{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+    margin-bottom: 100px;
+}
+
+.imgHeader{
+    height: 350px;
+    width: auto;
+}
+
+.labelSelector{
+    width: 90%;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    justify-content: space-evenly;
+    margin-bottom: 50px;
+    font-family: "poke-font";
+}
+
+.label{
+    font-size: 1.5rem;
+}
+
+#typeSelector{
+    padding: 5px 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 2px solid #00f;
+    background-color: white;
+    color:black;
+    margin-bottom: 20px;
+}
+
+
+.containerCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 200px;
+  border-radius: 10px;
+  background: #0a0f1c;
+  color: #e0f7ff;
+  padding: 10px;
+  border: 6px solid;
+  border-image: linear-gradient(90deg, var(--type-color), #fff, var(--type-color)) 1;
+}
+
+
+.identification{
+    display: grid;
+    width: 100%;
+    grid-template-columns: 1fr 5fr;
+}
+
+.pokemonImg{
+    width: 150px;
+    height: 150px;
+}
+
+.identification, .pokemonNumber, .pokemonType{
+    border-radius: 10px;
+    width: 100%;
+    text-align: center;
+    background-color: white;
+    padding: 3px;
+    border: 2px solid var(--type-color);
+}
+
+@keyframes borderShift {
+  0%   { border-image: linear-gradient(90deg, var(--type-color), #fff, var(--type-color)) 1; }
+  50%  { border-image: linear-gradient(90deg, #fff, var(--type-color), #fff) 1; }
+  100% { border-image: linear-gradient(90deg, var(--type-color), #fff, var(--type-color)) 1; }
+}
+
+
+.identification {
+  border-radius: 10px 10px 0 0; /* solo arriba redondeado */
+}
+
+.pokemonNumber {
+  border-radius: 10px; /* sin redondear */
+}
+
+.pokemonType {
+  border-radius: 0 0 10px 10px; /* solo abajo redondeado */
+}
+
+
+

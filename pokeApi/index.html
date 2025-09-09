@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Poke-API</title>
+</head>
+
+<body>
+
+    <header class="header">
+        <img src="./img/Pokémon_logo.png" alt="" class="imgHeader">
+    </header>
+    <div class="labelSelector">
+        <div class="selection">
+            <label class="label" for="typeSelector">Filtrar por tipo</label>
+            <select name="" id="typeSelector">
+                <option value="all">Todos</option>
+                <option value="normal">Normal</option>
+                <option value="fire">Fuego</option>
+                <option value="water">Agua</option>
+                <option value="electric">Eléctrico</option>
+                <option value="grass">Planta</option>
+                <option value="ice">Hielo</option>
+                <option value="fighting">Lucha</option>
+                <option value="poison">Veneno</option>
+                <option value="ground">Tierra</option>
+                <option value="flying">Volador</option>
+                <option value="psychic">Psíquico</option>
+                <option value="bug">Bicho</option>
+                <option value="rock">Roca</option>
+                <option value="ghost">Fantasma</option>
+                <option value="dragon">Dragón</option>
+                <option value="dark">Siniestro</option>
+                <option value="steel">Acero</option>
+                <option value="fairy">Hada</option>
+            </select>
+        </div>
+        <div class="findID">
+            <label for="numSelector" class="label">Numero</label>
+            <input type="number" id="numSelector" placeholder="ID del pokemon">
+            <button class="buttonId">Buscar</button>
+        </div>
+    </div>
+
+    <div class="container">
+
+        <template class="template">
+            <div class="containerCard">
+                <div class="identification">
+                    <p class="pokemonNumber"></p>
+                    <p class="pokemonName"></p>
+                </div>
+                <img src="" alt="" class="pokemonImg">
+                <p class="pokemonType"></p>
+            </div>
+        </template>
+
+    </div>
+
+
+    <script src="app.js"></script>
+</body>
+
+</html>
