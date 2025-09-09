@@ -1,0 +1,36 @@
+body{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.contenedor-externo{
+    display: flex;
+    background-color: lightblue;
+    width: 800px;
+    height: 500px;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid;
+}
+
+.contenedor-interno{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: lightcoral;
+    width: 300px;
+    height: 300px;
+    border: 1px solid;
+}
+
+.caja{
+    background-color: lightgreen;
+    border: 1px solid;
+    height: 100px;
+    width: 100px;
+    text-align: center;
+    line-height: 100px;
+
+}

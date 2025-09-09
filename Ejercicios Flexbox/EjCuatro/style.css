@@ -1,0 +1,29 @@
+.contenedor{
+    background-color: lightcoral;
+    display:flex;
+    justify-content: space-around;
+    height: 300px;
+}
+
+
+
+.caja{
+    background-color: lightblue;
+    height: 100px;
+    width: 100px;
+    border: 1px solid;
+    text-align:center;
+    line-height: 100px;
+}
+
+.c1{
+    flex-grow: 1;
+}
+
+.c2{
+    flex-grow: 2;
+}
+
+.c3{
+    flex-grow: 1;
+}

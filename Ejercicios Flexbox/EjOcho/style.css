@@ -1,0 +1,23 @@
+.contenedor{
+    display:flex;
+    flex-direction: column;
+    height: 500px;
+    justify-content: center;
+}
+
+
+.fila{
+    display:flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+
+.caja{
+    background-color: lightcoral;
+    border: 1px solid;
+    width: 100px;
+    height: 100px;
+    text-align: center;
+    line-height: 100px;
+}

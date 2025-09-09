@@ -1,0 +1,20 @@
+.card{
+    margin: auto;
+    background-color: lightcoral;
+    height: 500px;
+    width: 500px;
+    display:grid;
+    grid-template-rows: 40% auto;
+    text-align: center;
+    line-height: 250px;
+    font-size: 2rem;
+}
+
+.foto{
+    border: 1px solid;
+}
+
+.info{
+    border: 1px solid;
+    background-color: lightblue;
+}

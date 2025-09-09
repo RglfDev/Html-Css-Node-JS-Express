@@ -1,0 +1,17 @@
+.contenedor{
+    background-color: lightcoral;
+    height: 500px;
+    display: flex;
+    flex-wrap:wrap;
+    align-content: space-around;
+}
+
+
+.caja{
+    background-color: lightblue;
+    border: 1px solid;
+    height: 100px;
+    width: 100px;
+    text-align: center;
+    line-height: 100px;
+}

@@ -1,0 +1,37 @@
+body{
+    background-color: antiquewhite;
+    text-align: center;
+}
+
+.grid-layout{
+    height: 650px;
+    background-color: lightgreen;
+    border: 1px solid black;
+grid-template-rows: 20% 10% 60% auto;
+    display: grid;
+    grid-template-columns: auto auto;
+    
+}
+
+.caja{
+    border: 4px solid black;
+    background-color: lightgray;
+    
+    text-align: center;
+    line-height: 150px;
+    float: left;
+    
+}
+
+.c1{
+    grid-column: 1 / span 2;
+    background-color: lightblue;
+}
+
+.c2{
+    
+}
+
+.c10{
+    
+}

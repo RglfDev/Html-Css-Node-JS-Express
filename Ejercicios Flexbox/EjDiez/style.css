@@ -1,0 +1,41 @@
+/* body{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+} */
+
+.tarjeta{
+    margin:0% auto;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    height: 450px;
+    width: 450px;
+    background-color: lightsalmon; 
+    border-radius: 25%; 
+}
+
+.titulo{
+    margin-bottom: 20px;
+    font-size: 2rem;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.cuerpo{
+    margin-top: 20px;
+    background-color: lightgoldenrodyellow;
+    padding: 10px;
+    font-size: 1.3rem;
+    border-radius: 10px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.botones{
+
+display: flex;
+flex-direction: row;
+justify-content: space-evenly;
+}

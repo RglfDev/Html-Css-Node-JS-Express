@@ -1,0 +1,20 @@
+.gallery{
+    display:grid;
+    background-color: lightcoral;
+    height: 100vh;
+    grid-template-columns: repeat(3,1fr);
+    gap:15px;
+    place-items:center;
+
+}
+
+
+.foto{
+    border: 1px solid;
+    background-color: lightblue;
+    width:150px;
+    height: 150px;
+    font-size: 2rem;
+    text-align: center;
+    line-height: 150px;
+}

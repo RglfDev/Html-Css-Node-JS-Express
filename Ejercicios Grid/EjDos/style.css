@@ -1,0 +1,18 @@
+.container{
+    height: 500px;
+    background-color: lightcoral;
+    display:grid;
+    grid-template-columns: 100px 1fr 2fr;
+    gap:10px;
+}
+
+
+
+
+.item{
+    border: 1px solid;
+    background-color: lightblue;
+    font-size: 2rem;
+    text-align: center;
+    line-height: 500px;
+}
