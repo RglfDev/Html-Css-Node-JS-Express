@@ -1,0 +1,62 @@
+Para crear un nuevo artículo:
+
+
+    EJ: http://localhost:3000/api/crear
+
+    método POST en la que habrá que introducir dos campos en body/x-www-form urlenoded (titulo y contenido, ambos con campo de texto en su interior)
+
+
+Para listar los articulos:
+
+    EJ: http://localhost:3000/api/articulos
+
+    metodo GET introduciendo esa URL.
+
+
+Filtrar un artículo por ID:
+
+    http://localhost:3000/api/articulo/:id
+    EJ: http://localhost:3000/api/articulo/68b5d03a875cfb18298bb293
+
+    Método GET. El último trozo de la URL es el ID de un articulo en concreto. El programa lo maneja con un parámetro (/:id)
+
+
+Borrar un artículo:
+
+    http://localhost:3000/api/articulo/:id
+    EJ: http://localhost:3000/api/articulo/68b695f37e98e0953b829d51
+
+    Método DELETE que borra un artículo introduciendo en la URL el id del mismo. Funciona con el parametro de URL (/:id)
+
+
+Actualización de un artículo:
+
+    http://localhost:3000/api/articulo/:id
+    EJ: http://localhost:3000/api/articulo/68b5d03a875cfb18298bb293
+
+    Método PUT. Actualiza un artículo introduciendo sus textos nuevos en los campos de body/x-www-form urlenoded (titulo y contenido, ambos con campo de texto en su interior)
+
+
+Subir una foto o archivo: 
+
+    http://localhost:3000/api/subir-imagen/:id
+    EJ: http://localhost:3000/api/subir-imagen/68b5d03a875cfb18298bb293
+
+    Método POST. Sube una imagen introducida por URL. La imagen se introduce por form-data. Indicando que el tipo de archivo va a ser "file", se habilitará un
+    botón para la subida de archivos. En la respuesta aparecerá un JSON con el archivo en su interior
+
+
+Imprimir una imagen de un artículo en una nueva pestaña del navegador:
+
+    http://localhost:3000/api/imagen/:fichero
+    EJ: http://localhost:3000/api/imagen/articulo1756810835532istockphoto-1313489780-612x612.jpg
+
+    Método GET. Se introduce en el parametro de la URL el nombre de la imagen o fichero y el programa se encarga de enviarla al navegador si existe
+
+
+Buscar un artículo por palabra determinada en parametro de URL:
+
+    http://localhost:3000/api/buscar/:busqueda
+    EJ: http://localhost:3000/api/buscar/articulo
+
+    Método GET. Se introduce una palabra "clave" en el parámetro de búsqueda y el programa muestra los artículos que contengan dicha palabra
