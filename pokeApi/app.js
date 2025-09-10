@@ -85,8 +85,8 @@ function pokemonCard(pokemonObj) { //Función que contruye el template con los C
 
 selector.addEventListener("change", () => { // Función de escucha del selector para mostrar los pokemon según el tipo seleccionado
 
-        searchID.value = ""
-        /*Vaciamos el buscador para mejorar la estética
+    searchID.value = ""
+    /*Vaciamos el buscador para mejorar la estética*/
     let selectedType = selector.value //Recogemos el valor del selector
     container.innerHTML = "" //Borramos la pantalla de Cards si las hubiera
     const fragmentFilter = document.createDocumentFragment(); //Creamos un fragment propio de esta función para volver a construir el resultado
@@ -95,24 +95,24 @@ selector.addEventListener("change", () => { // Función de escucha del selector 
         if (selectedType === "all" || item.type === selectedType) {
             /*Si el tipo seleccionad es "all" o coincide con el tipo de algún pokemon se 
                                                                                vuelve a realizar el proceso de creación por cada pokemon encontrado en el resultado*/
-        const clone = template.content.cloneNode(true);
+            const clone = template.content.cloneNode(true);
 
-        const pId = clone.querySelector(".pokemonNumber");
-        const card = clone.querySelector(".containerCard");
-        const pName = clone.querySelector(".pokemonName");
-        const pImg = clone.querySelector(".pokemonImg");
-        const pType = clone.querySelector(".pokemonType");
+            const pId = clone.querySelector(".pokemonNumber");
+            const card = clone.querySelector(".containerCard");
+            const pName = clone.querySelector(".pokemonName");
+            const pImg = clone.querySelector(".pokemonImg");
+            const pType = clone.querySelector(".pokemonType");
 
-        pId.textContent = item.id;
-        pName.textContent = item.name;
-        pImg.setAttribute("src", item.img);
-        pType.textContent = item.espType;
+            pId.textContent = item.id;
+            pName.textContent = item.name;
+            pImg.setAttribute("src", item.img);
+            pType.textContent = item.espType;
 
-        applyTypeColors(item, card, pId, pName, pType); // Se vuelve a llamar al metodo de coloreado
-        fragmentFilter.appendChild(clone)
+            applyTypeColors(item, card, pId, pName, pType); // Se vuelve a llamar al metodo de coloreado
+            fragmentFilter.appendChild(clone)
+        }
     }
-}
-container.appendChild(fragmentFilter) //Agregamos el nuevo fragment al container, haciendo que muestre las tarjetas pokemon construidas a traves del filtrado del selector
+    container.appendChild(fragmentFilter) //Agregamos el nuevo fragment al container, haciendo que muestre las tarjetas pokemon construidas a traves del filtrado del selector
 })
 
 
