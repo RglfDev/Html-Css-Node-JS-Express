@@ -5,7 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/register.css">
-    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cal+Sans&family=Lexend:wght@100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Raleway:ital,wght@0,100..900;1,100..900&family=Story+Script&display=swap"
+        rel="stylesheet">
+    <title>FilmWay Regístrate</title>
 </head>
 
 <body>
@@ -17,38 +23,49 @@
 
             <div class="userNameDiv labelDiv">
                 <label for="userName">Nombre</label>
-                <input id="userName" type="text">
+                <input id="userName" class="input" type="text">
             </div>
 
             <div class="userSurameDiv labelDiv">
                 <label for="userSurname">Apellidos</label>
-                <input id="userSurname" type="text">
+                <input id="userSurname" class="input" type="text">
             </div>
 
             <div class="userNickDiv labelDiv">
                 <label for="userNick">Nickname</label>
-                <input id="userNick" type="text">
+                <input id="userNick" class="input" type="text">
+            </div>
+
+            <div class="emailDiv labelDiv">
+                <label for="email">Email</label>
+                <input id="userEmail" class="input" type="email">
             </div>
 
             <div class="userPassDiv labelDiv">
                 <label for="userPass">Contraseña</label>
-                <input id="userPass" type="password">
+                <input id="userPass" class="input" type="password">
             </div>
 
             <div class="userRepeatPassDiv labelDiv">
                 <label for="userRepeatPass">Repite la contraseña</label>
-                <input id="userRepeatPass" type="password">
+                <input id="userRepeatPass" class="input" type="password">
             </div>
 
             <div class="termsAndConditionsDiv">
-                <label for="termsAndConditions">He leido los terminos y condiciones</label>
-                <input type="checkbox">
+                <label class="labelTerms" for="termsAndConditions">He leido los terminos y condiciones</label>
+                <input id="checkbox" type="checkbox">
             </div>
         </container>
 
         <container class="containerButton">
-            <button id="btnRegister">Registrar usuario</button>
+            <button class="btnRegister" id="btnRegister">Registrar usuario</button>
         </container>
+
+        <container class="containerFailure">
+            <p id="failureText"></p>
+        </container>
+
+        <script src="../services/register.js"></script>
 
     </container>
 </body>
