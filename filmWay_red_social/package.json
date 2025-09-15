@@ -9,6 +9,7 @@
   "author": "Ruben Gomez-Lobo",
   "license": "MIT",
   "dependencies": {
+    "bcrypt": "^6.0.0",
     "bcrypt-nodejs": "^0.0.3",
     "express": "^5.1.0",
     "mongoose": "^8.18.1",
