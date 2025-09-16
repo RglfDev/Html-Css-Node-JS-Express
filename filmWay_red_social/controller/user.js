@@ -13,12 +13,22 @@ const registerUser = async (req, res) => { //Función de registro de usuario en 
             email
         } = req.body
 
-        const verifyUser = await User.findOne({ //Comprobamos que el nickName no exista ya en otro usuario de la BBDD
+        const verifyNick = await User.findOne({ //Comprobamos que el nickName no exista ya en otro usuario de la BBDD
             nickName
         })
-        if (verifyUser) {
+        if (verifyNick) {
             return res.status(400).json({ //Si existe, lanzamos un error
                 message: "El nick ya está en uso"
+            })
+        }
+
+        const verifyEmail = await User.findOne({
+            email
+        })
+
+        if (verifyEmail) {
+            return res.status(400).json({ //Si existe, lanzamos un error
+                message: "El email ya está registrado"
             })
         }
 

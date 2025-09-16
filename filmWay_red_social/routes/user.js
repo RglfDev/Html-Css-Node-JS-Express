@@ -2,7 +2,6 @@
  * Archivo que define la ruta por la que se harán las acciones de guardado de nuevos usuarios "/api/users/register"
  */
 
-
 const express = require("express")
 const router = express.Router() //Generamos la instancia del router
 const registerUserController = require("../controller/user") //Requerimos el controlador de registro

@@ -3,42 +3,46 @@ document.querySelectorAll("[id]").forEach(el => (ui[el.id] = el)) //Acción para
 
 
 
-btnLogin.addEventListener("click", async () => {
+btnLogin.addEventListener("click", async () => { // Captura del evento de click del botón de login
 
-    console.log("Boton pulsado")
+    console.log("Boton pulsado") //Comprobación por consola de la pulsación
 
-    const email = userInput.value
-    const passUser = passInput.value
+    const email = userInput.value //Capturamos el email del campo de texto
+    const passUser = passInput.value //Capturamos la contraseña del campo de texto
 
-    if (email === "" || passUser === "") {
+    if (email === "" || passUser === "") { //Si alguno de los campos está vacío mostramos un mensaje en pantalla
 
         warningText.textContent = "Debes rellenar ambos campos"
         warningText.style.color = "red"
 
-    } else {
+    } else { //Si todo va bien...
 
-        console.log(email, passUser)
+        console.log(email, passUser) //Comprobación de los valores capturados en los campos de texto por consola
 
-        const userData = {
+        const userData = { //Creamos un objeto para guardar ambos datos
             password: passUser,
             email: email,
         }
 
-        const res = await fetch("api/users/login", {
+        console.log(userData)
+
+        const res = await fetch("/api/users/login", { //Hacemos un fetch de tipo POST a la dirección del servidor donde se realizarán las acciones del login 
             method: "POST",
             headers: {
-                "content-type": "application/json"
+                "Content-Type": "application/json"
             },
-            body: JSON.stringify(userData)
+            body: JSON.stringify(userData) //Convertimos los datos a JSON
         })
 
 
-        const data = await res.json()
+
+        const data = await res.json() //Capturamos el json devuelto por el servidor 
 
         warningText.textContent = data.message; //...y las mostramos en el texto informativo de la página...
         warningText.style.color = res.ok ? "green" : "red"; //...con su correspondiente color indicando si es éxito o fallo
 
         console.log("Backend: ", data.message) //Bandera para comprobar qué nos devuelve el backend
+        console.log("Token:", data.token) //Impresión del token por consola
 
     }
 

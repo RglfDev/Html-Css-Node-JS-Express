@@ -12,7 +12,6 @@ const userSchema = Schema({ //Comenzamos la creación del esquema con los campos
     userName: { //Nombre del usuario
         type: String,
         required: true,
-        unique: true
     },
     userSurname: { //Apellidos del usuario
         type: String,
@@ -29,7 +28,8 @@ const userSchema = Schema({ //Comenzamos la creación del esquema con los campos
     },
     email: { //Email del usuario
         type: String,
-        required: true
+        required: true,
+        unique: true
     },
     image: { //Imagen del usuario (comenzará siendo por defeco una predefinida)
         type: String,
