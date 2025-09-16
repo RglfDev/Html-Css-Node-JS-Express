@@ -9,7 +9,8 @@ const registerUser = async (req, res) => { //Función de registro de usuario en 
             userName,
             userSurname,
             nickName,
-            password
+            password,
+            email
         } = req.body
 
         const verifyUser = await User.findOne({ //Comprobamos que el nickName no exista ya en otro usuario de la BBDD
@@ -27,7 +28,8 @@ const registerUser = async (req, res) => { //Función de registro de usuario en 
             userName,
             userSurname,
             nickName,
-            password: hashPass
+            password: hashPass,
+            email,
         })
 
         await newUser.save() //Guardamos el objeto en la base de datos
@@ -42,6 +44,9 @@ const registerUser = async (req, res) => { //Función de registro de usuario en 
         })
     }
 }
+
+
+/* const loginUser = async(req,res) */
 
 
 module.exports = registerUser //Exportamos en controlador para poder utilizarlo desde el router

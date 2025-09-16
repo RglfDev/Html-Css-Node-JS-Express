@@ -81,6 +81,11 @@ input:focus {
     color: blue;
 }
 
+.warningText{
+    font-style: italic;
+    font-size: 0.8rem;
+}
+
 .btnLogin{
     width: 170px;
     height: 50px;

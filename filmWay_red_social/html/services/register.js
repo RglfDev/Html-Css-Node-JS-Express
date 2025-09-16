@@ -3,7 +3,7 @@
  */
 
 const ui = []
-document.querySelectorAll(["id"]).forEach(el => (ui[el.id] = el)) //Acción para capturar todos los elementos del html por su ID de golpe
+document.querySelectorAll("[id]").forEach(el => (ui[el.id] = el)) //Acción para capturar todos los elementos del html por su ID de golpe
 
 btnRegister.addEventListener("click", async () => { //Evento de click del botón
 
@@ -44,6 +44,7 @@ btnRegister.addEventListener("click", async () => { //Evento de click del botón
                 userSurname: surname,
                 nickName: nick,
                 password: pass,
+                email: email,
             }
 
 

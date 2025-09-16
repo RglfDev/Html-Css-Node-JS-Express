@@ -27,6 +27,10 @@ const userSchema = Schema({ //Comenzamos la creación del esquema con los campos
         type: String,
         required: true
     },
+    email: { //Email del usuario
+        type: String,
+        required: true
+    },
     image: { //Imagen del usuario (comenzará siendo por defeco una predefinida)
         type: String,
         default: "https://cdn-icons-png.freepik.com/256/9365/9365334.png"
