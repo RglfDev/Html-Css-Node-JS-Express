@@ -3,9 +3,8 @@ const path = require("path")
 const {
     connection
 } = require("../database/connection.js") //Traemos el módulo de la conexión a la base de datos
-const auth = require("../middleware/auth.js")
 const userRoutes = require("../routes/user.js") //Requerimos el router configurado para la creación de usuarios
-const authRoutes = require("../routes/auth.js") //Requerimos el router de autenticación para los token
+const filmRoutes = require("../routes/film.js") //Requerimos el router de peliculas 
 
 
 
@@ -32,6 +31,9 @@ app.get("/register", (req, res) => {
 
 /*Ruta para poder acceder a las acciones de creación de nuevo usuario. Accedemos al router configurado de este mismo*/
 app.use("/api/users", userRoutes)
+
+
+app.use("/api/films", filmRoutes)
 
 
 

@@ -6,5 +6,8 @@
     "configToken":{
         "SEED":"password",
         "expiration":"24h"
+    },
+    "apiKey":{
+        "KEY":"e30c1ae43fe34f0a90b23ecb086b8571"
     }
 }

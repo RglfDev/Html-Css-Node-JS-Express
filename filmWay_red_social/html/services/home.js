@@ -5,17 +5,44 @@ const typeSelector = document.querySelector(".typeSelector")
 const inputFilm = document.querySelector(".inputFilm")
 const btnSearch = document.querySelector(".btnSearch")
 
-const apiKey = "e30c1ae43fe34f0a90b23ecb086b8571"
-let url = `https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}`
+
+let url = `/api/films/popular?page=1`
 
 const filmList = []
 
+function getToken() {
+    const token = localStorage.getItem("token");
+    if (!token) {
+        window.location.href = "/login.html";
+    }
+    return token;
+}
+
 async function connection() {
 
-    const res = await fetch(url)
+    const token = getToken()
+
+    if (!token) {
+        console.log("Debes volver a loguearte")
+        window.location.href = "/login.html"
+        return
+
+    }
+
+    const res = await fetch(url, {
+        headers: {
+            "Authorization": `Bearer ${token}`
+        }
+    })
+
+    if (res.status === 401) {
+        localStorage.removeItem("token");
+        window.location.href = "/login.html";
+        return;
+    }
     const data = await res.json()
 
-    console.log(data)
+    console.log(data.results)
 
     data.results.forEach(film => {
 
@@ -51,6 +78,8 @@ function createFragment(filmObject) {
 }
 
 typeSelector.addEventListener("change", () => {
+
+
     inputFilm.value = ""
     main.innerHTML = ""
     fragment.innerHTML = ""
@@ -59,10 +88,10 @@ typeSelector.addEventListener("change", () => {
 
     if (genre === "") {
         // Si se selecciona "Todos", usamos popular
-        url = `https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}&language=es-ES&page=1`
+        url = `/api/films/popular?page=1`
     } else {
         // Filtrar por género
-        url = `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&with_genres=${genre}&language=es-ES&page=1`
+        url = `/api/films/genre?genre=${genre}&page=1`
     }
 
     connection()
@@ -70,6 +99,9 @@ typeSelector.addEventListener("change", () => {
 })
 
 async function searchAllPages(query) {
+
+    const token = getToken()
+
     main.innerHTML = ""
     fragment.innerHTML = ""
 
@@ -78,9 +110,19 @@ async function searchAllPages(query) {
     let totalPages = 1
 
     do {
-        const res = await fetch(
-            `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&language=es-ES&query=${encodeURIComponent(query)}&page=${page}`
-        )
+        const res = await fetch(`/api/films/search?query=${encodeURIComponent(query)}&page=${page}`, {
+            headers: {
+                "Authorization": `Bearer ${token}`
+            }
+
+        })
+
+        if (res.status === 401) { // Token inválido o caducado
+            localStorage.removeItem("token");
+            window.location.href = "/login.html";
+            return;
+        }
+
         const data = await res.json()
         allResults.push(...data.results)
         totalPages = data.total_pages
@@ -106,6 +148,8 @@ btnSearch.addEventListener("click", () => {
         searchAllPages(value)
     }
 })
+
+
 
 
 connection()
