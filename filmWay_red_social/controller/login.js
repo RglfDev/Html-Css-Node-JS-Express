@@ -1,6 +1,7 @@
 const User = require("../models/user") //Requerimos el modelo de la base de datos 
 const bcrypt = require("bcrypt") //Requerimos "bcrypt" para poder cifrar las contraseñas
 const jwt = require("jsonwebtoken")
+const config = require("config")
 
 const loginUser = async (req, res) => { //Controlador para realizar la acción de login 
 
@@ -8,14 +9,16 @@ const loginUser = async (req, res) => { //Controlador para realizar la acción d
         console.log("REQ.BODY:", req.body) //Comprobación del body recibido
         const {
             email,
-            password
+            password,
         } = req.body //Asignación de campos desde el body recibido
 
 
 
         const user = await User.findOne({ //Búsqueda del email en la base de datos y obtención de la contraseña
             email
-        }).select('+password')
+        })
+
+        console.log("Usuario buscado:", user)
 
         if (!user) { //Si no hay resultados en la búsqueda...
             return res.status(400).json({
@@ -36,14 +39,26 @@ const loginUser = async (req, res) => { //Controlador para realizar la acción d
 
             console.log("Usuario encontrado:", user) //Comprobación por consola del usuario 
 
-            const jwtoken = jwt.sign({ //Generación del Token
-                id: user._id, // Contendrá el id del documento
-                email: user.email //Y el email del usuario
-            }, "password") //Por ultimo generamos una contraseña simbólica para codificar en Base64 (En la realidad la contraseña debe ser mucho mas compleja)
+            const jwtoken = jwt.sign({
+                data: {
+                    id: user._id,
+                    nick: user.nickName,
+                    email: user.email
+                }
+            }, config.get("configToken.SEED"), {
+                expiresIn: config.get("configToken.expiration")
+            })
 
 
             return res.status(200).json({ //Si todo sale bien, mandamos respuesta
                 message: "Usuario verificado. Login correcto",
+                user: {
+                    _id: user.id,
+                    userName: user.userName,
+                    nickName: user.nickName,
+                    email: user.email,
+
+                },
                 token: jwtoken
             })
 

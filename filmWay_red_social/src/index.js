@@ -3,8 +3,10 @@ const path = require("path")
 const {
     connection
 } = require("../database/connection.js") //Traemos el módulo de la conexión a la base de datos
+const auth = require("../middleware/auth.js")
 const userRoutes = require("../routes/user.js") //Requerimos el router configurado para la creación de usuarios
 const authRoutes = require("../routes/auth.js") //Requerimos el router de autenticación para los token
+
 
 
 const app = express() //Inicializamos express
@@ -15,10 +17,8 @@ app.use(express.json()) //Setting para configurar y permitir poder leer en forma
 
 
 app.use(express.static(path.join(__dirname, "../html"))); //Ruta para poder mostrar los ficheros de la carpeta html
-
 app.use("/services", express.static(path.join(__dirname, "../services"))); //Ruta para poder acceder a los ficheros de servicio (Javascript)
-
-
+app.use("/home", express.static(path.join(__dirname, "../home")))
 
 /* Ruta para cargar la página de login*/
 app.get("/login", (req, res) => {
@@ -32,15 +32,6 @@ app.get("/register", (req, res) => {
 
 /*Ruta para poder acceder a las acciones de creación de nuevo usuario. Accedemos al router configurado de este mismo*/
 app.use("/api/users", userRoutes)
-
-
-
-
-
-
-
-
-
 
 
 

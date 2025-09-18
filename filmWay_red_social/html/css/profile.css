@@ -1,0 +1,90 @@
+/*Parte igual en las tres páginas*/
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 100%;
+    font-family: "Raleway", sans-serif;
+}
+
+.header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.header img{
+    
+    border: 4px solid #58D5D3;
+    border-radius:10px ;
+}
+
+.menu {
+    display: flex;
+    width: 100%;
+    background-image: url("../images/pulp-title.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 0;
+    gap: 0; 
+    background-color: rgba(0,0,0,0.4); 
+    background-blend-mode: darken;
+    
+}
+
+.btn {
+    flex: 1;
+    background: none; 
+    border: none;      
+    border-radius: 0;  
+    color: white;
+    text-decoration: none;
+    font-size: 1.5rem;
+    padding: 10px 0;
+    text-align: center;
+    margin-top: auto;
+    
+}
+
+.btn:hover {
+    border: 2px solid #58D5D3;
+    color: #58D5D3;
+    border-radius:10px ;
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+.selectors{
+    font-size: 1.5rem;
+    display: grid;
+    grid-template-columns: 25% 50% 25%;
+    align-items: center;
+    text-align: center;
+    height: 100px;
+    width:100%;
+    gap:10px;
+}
+
+.searchInput{
+    margin-left: 20px;
+}
+
+.typeSelector{
+    font-size: 1rem;
+}
+
+.inputFilm{
+    font-size: 1rem;
+    padding: 2px;
+}
+
+/*Fin de la parte repetida*/
+/*-------*/
+/*-------*/
+/*-------*/

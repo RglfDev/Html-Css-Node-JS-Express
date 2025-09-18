@@ -43,6 +43,12 @@ btnLogin.addEventListener("click", async () => { // Captura del evento de click 
 
         console.log("Backend: ", data.message) //Bandera para comprobar qué nos devuelve el backend
         console.log("Token:", data.token) //Impresión del token por consola
+        console.log("Usuario:", data.user)
+
+        if (res.ok) {
+            localStorage.setItem("token", data.token)
+            window.location.href = "/home.html"
+        }
 
     }
 

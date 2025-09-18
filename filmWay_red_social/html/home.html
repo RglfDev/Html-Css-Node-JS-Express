@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/home.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cal+Sans&family=Lexend:wght@100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Raleway:ital,wght@0,100..900;1,100..900&family=Story+Script&display=swap"
+        rel="stylesheet">
+    <title>FilmWay/Home</title>
+</head>
+
+<body>
+    <header class="header">
+        <img src="./images/Logo.PNG" alt="">
+        <div class="menu">
+            <nav class="menu">
+                <a id="btnHome" class="btn" href="home.html">Inicio</a>
+                <a id="btnProfile" class="btn" href="profile.html">Perfil</a>
+                <a id="btnLogout" class="btn" href="/logout">Cerrar sesión</a>
+            </nav>
+        </div>
+    </header>
+    <container class="selectorContainer">
+        <div class="selectors">
+            <div class="searchInput">
+                <label for="inputFilm">Buscar película</label>
+                <input id="inputFilm" class="inputFilm" type="text">
+                <button id="btnSearch" class="btnSearch">Buscar</button>
+            </div>
+            <div class="actualPage">
+                <h1>Listado de películas</h1>
+            </div>
+            <div class="filerSelector">
+                <label for="typeSelector">Filtrar</label>
+                <select id="typeSelector" class="typeSelector" name="">
+                    <option value="" class="todos">Todos</option>
+                    <option value="28" class="accion">Acción</option>
+                    <option value="12" class="aventura">Aventura</option>
+                    <option value="16" class="animacion">Animación</option>
+                    <option value="35" class="comedia">Comedia</option>
+                    <option value="80" class="crimen">Crimen</option>
+                    <option value="99" class="documental">Documental</option>
+                    <option value="18" class="drama">Drama</option>
+                    <option value="10751" class="familia">Familia</option>
+                    <option value="14" class="fantasia">Fantasía</option>
+                    <option value="36" class="historia">Historia</option>
+                    <option value="27" class="terror">Terror</option>
+                    <option value="10402" class="musica">Música</option>
+                    <option value="9648" class="misterio">Misterio</option>
+                    <option value="10749" class="romance">Romance</option>
+                    <option value="878" class="ciencia-ficcion">Ciencia ficción</option>
+                    <option value="10770" class="pelicula-tv">Película de TV</option>
+                    <option value="53" class="suspense">Suspense</option>
+                    <option value="10752" class="belica">Bélica</option>
+                    <option value="37" class="western">Western</option>
+                </select>
+                </select>
+            </div>
+        </div>
+    </container>
+
+
+
+    <container class="main">
+        <template id="templateList" class="template">
+            <container class="filmContainer">
+                <p id="filmTitle" class="filmTitle"><b>Título</b></p>
+                <div class="imageContainer">
+                    <button id="filmButton" class="filmButton">
+                        <img id="filmImg" class="filmImg" src="./images/sw-poster_.jpg" alt="">
+                    </button>
+                </div>
+                <div class="filmFooter">
+                    <p id="filmComments" class="filmComments">Comentarios: </p>
+                    <button id="filmAddButton" class="filmAddButton">Añadir a tu lista</button>
+                </div>
+            </container>
+        </template>
+
+    </container>
+    <script src="./services/home.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,10 @@
+{
+    "nombre" : "Redo Social Express - filmWay",
+    "configDB": {
+        "HOST": "mongodb://localhost:27017/filmWare"
+    },
+    "configToken":{
+        "SEED":"password",
+        "expiration":"24h"
+    }
+}

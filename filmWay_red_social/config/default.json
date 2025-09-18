@@ -1,0 +1,10 @@
+{
+    "nombre" : "Redo Social Express - filmWay",
+    "configDB": {
+        "HOST": "mongodb://127.0.0.1:27017/filmway"
+    },
+    "configToken":{
+        "SEED":"password",
+        "expiration":"24h"
+    }
+}
