@@ -4,13 +4,16 @@ const config = require("config")
 const auth = (req, res, next) => {
     try {
 
-        const token = req.header("Authorization").replace("Bearer ", "")
+        const authHeader = req.header("Authorization");
 
-        if (!token) {
+        if (!authHeader) {
             return res.status(401).json({
                 message: "Acceso denegado. No hay Token"
-            })
+            });
         }
+
+        const token = authHeader.replace("Bearer ", "").trim();
+
 
         const decoded = jwt.verify(token, config.get("configToken.SEED"))
 

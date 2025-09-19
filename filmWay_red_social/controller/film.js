@@ -1,5 +1,4 @@
 const express = require("express")
-const fetch = require("node-fetch")
 const config = require("config")
 
 const apiKey = config.get("apiKey.KEY")
@@ -7,11 +6,14 @@ console.log(apiKey)
 
 async function loadFilms(req, res) {
 
+
     try {
         const page = req.query.page || 1
+        console.log(page)
 
         const url = `https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}&language=es-ES&page=${page}`
         const response = await fetch(url)
+
         if (!response.ok) {
             return res.status(response.status).json({
                 message: 'Error desde TMDB'
@@ -19,25 +21,20 @@ async function loadFilms(req, res) {
         }
 
         const data = await response.json()
-        console.log("Respuesta completa de TMDB:", data)
 
         if (!data.results) {
-            console.error("Error TMDB:", data)
             return res.status(500).json({
                 message: 'Datos inválidos de TMDB'
             })
         }
 
-
-
-
         res.json(data)
     } catch (error) {
         return res.status(500).json({
-            message: "No se ha podido conectar a la API"
+            message: "No se ha podido conectar a la API",
+            error: error.message
         })
     }
-
 }
 
 
@@ -58,20 +55,18 @@ async function filmsByGenre(req, res) {
         }
 
         const data = await response.json()
-        console.log("Respuesta completa de TMDB:", data)
 
         if (!data.results) {
-            console.error("Error TMDB:", data)
             return res.status(500).json({
                 message: 'Datos inválidos de TMDB'
             })
         }
-
         res.json(data)
 
     } catch (error) {
         return res.status(500).json({
-            message: "No se ha podido conectar a la API"
+            message: "No se ha podido conectar a la API",
+            error: error.message
         })
     }
 
@@ -92,6 +87,8 @@ async function searchFilm(req, res) {
         }
 
         const url = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&language=es-ES&query=${encodeURIComponent(query)}&page=${page}`;
+        console.log("URL construida:", url);
+
         const response = await fetch(url)
         if (!response.ok) {
             return res.status(response.status).json({
@@ -100,10 +97,8 @@ async function searchFilm(req, res) {
         }
 
         const data = await response.json()
-        console.log(data)
 
         if (!data.results) {
-            console.error("Error TMDB:", data)
             return res.status(500).json({
                 message: 'Datos inválidos de TMDB'
             })
@@ -113,10 +108,10 @@ async function searchFilm(req, res) {
 
     } catch (error) {
         return res.status(500).json({
-            message: "No se ha podido conectar a la API"
+            message: "No se ha podido conectar a la API",
+            error: error.message
         })
     }
-
 }
 
 

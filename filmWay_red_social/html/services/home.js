@@ -42,6 +42,11 @@ async function connection() {
     }
     const data = await res.json()
 
+    if (!data.results || data.results.length === 0) {
+        console.warn(" No se recibieron películas");
+        return;
+    }
+
     console.log(data.results)
 
     data.results.forEach(film => {
@@ -148,8 +153,6 @@ btnSearch.addEventListener("click", () => {
         searchAllPages(value)
     }
 })
-
-
 
 
 connection()
