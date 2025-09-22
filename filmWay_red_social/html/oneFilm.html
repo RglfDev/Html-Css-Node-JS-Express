@@ -25,9 +25,49 @@
             </nav>
         </div>
     </header>
+    <container class="main">
+        <container class="filmCard">
 
-    <h1 id="title" class="title">Titulo</h1>
-    <img id="imgFilm" src="" alt="IMAGEN" class="img">
+            <h1 id="title" class="title">Titulo</h1>
+            <img id="imgFilm" src="" alt="IMAGEN" class="imgFilm">
+            <p id="genresFilm" class="genresFilm"><b>Género: </b></p>
+            <p id="dateFilm" class="dateFilm"><b>Fecha de lanzamiento: </b></p>
+            <p id="durationFilm" class="dateFilm"><b>Duración: </b></p>
+            <p id="descriptionTitle" class="descriptionTitle"><b>Sinopsis</b></p>
+            <p id="descriptionFilm" class="descriptionFilm">Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                Laboriosam ipsa corporis autem laudantium recusandae natus ratione repellendus deleniti iure. Fuga ipsam
+                dolorem a facilis iure saepe quisquam eius laboriosam quidem.</p>
+        </container>
+
+        <container class="comments">
+            <h2 class="commentTitle">Comentarios:</h2>
+
+            <template>
+                <div class="userComments">
+                    <h4 class="userName">Nombre del usuario</h4>
+                    <p class="commentContent">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore
+                        consequuntur
+                        quia quisquam, libero earum accusantium similique cupiditate officia unde velit! Quos nostrum
+                        blanditiis recusandae deserunt commodi incidunt libero assumenda debitis!</p>
+                    <p class="dateComment">Fecha de publicación : 02.02.2025</p>
+                </div>
+            </template>
+        </container>
+
+        <container class="addComment">
+
+            <h2 class="addTitle">Añadir un comentario: </h2>
+            <div class="inputDiv">
+                <label for="commentText" class="addLabel">Añade aquí un comentario</label>
+                <textarea class="commentText" type="text"></textarea>
+                <div class="footerComment">
+                    <button class="submit">Enviar</button>
+                    <p class="warningText">* El comentario debe tener algún tipo de contenido</p>
+                </div>
+            </div>
+
+        </container>
+    </container>
 
     <script src="./services/oneFilm.js"></script>
 </body>

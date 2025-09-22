@@ -1,5 +1,8 @@
 const params = new URLSearchParams(window.location.search)
 const id = params.get("id")
+const commentText = document.querySelector(".commentText")
+const btnSubmit = document.querySelector(".submit")
+const warningText = document.querySelector(".warningText")
 
 
 function getToken() {
@@ -28,8 +31,59 @@ async function showOneFilm() {
 
     document.getElementById("title").textContent = data.title;
     document.getElementById("imgFilm").src = `https://image.tmdb.org/t/p/w500${data.poster_path}`;
+    document.getElementById("dateFilm").innerHTML = `<strong>Fecha de lanzamiento:</strong> ${data.release_date}`
+    document.getElementById("durationFilm").innerHTML = `<strong>Duración:</strong> ${data.runtime} min`
+    document.getElementById("descriptionFilm").textContent = data.overview
+    const genres = data.genres.map(item => item.name).join(", ");
+    document.getElementById("genresFilm").innerHTML = `<strong>Géneros:</strong> ${genres}`;
+
+}
+
+btnSubmit.addEventListener("click", () => {
+
+    const commentContent = commentText.value
+
+    saveComment(commentContent, id)
+
+})
+
+async function saveComment(commentContent, id) {
+
+    const token = getToken()
+
+    if (commentContent == "") {
+
+        warningText.style.visibility = "visible"
+
+    } else {
+        warningText.style.visibility = "hidden"
+        try {
+
+            const res = await fetch("/api/films/addComment", {
+                method: "POST",
+                headers: {
+                    "content-type": "application/json",
+                    "Authorization": `Bearer ${token}`
+                },
+                body: JSON.stringify({
+                    filmId: id,
+                    comment: commentContent
+                })
+            })
+
+            if (!res.ok) {
+                console.error("Error al guardar comentario");
+            } else {
+                console.log("Comentario guardado con éxito");
+                commentText.value = ""
+            }
+
+        } catch (error) {
+            console.log(error)
+        }
 
 
+    }
 }
 
 

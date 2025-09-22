@@ -1,5 +1,6 @@
 const express = require("express")
 const config = require("config")
+const Comments = require("../models/comments")
 
 const apiKey = config.get("apiKey.KEY")
 console.log(apiKey)
@@ -141,10 +142,72 @@ async function oneFilm(req, res) {
 
 }
 
+async function addComment(req, res) {
+
+    try {
+
+        const {
+            filmId,
+            comment
+        } = req.body
+
+        const nickName = req.user.nick
+
+        if (!filmId || !comment) {
+            return res.status(400).json({
+                message: "Faltan parámetros"
+            })
+        }
+
+        const newComment = {
+            userNick: nickName,
+            userComment: comment,
+            dateComment: new Date()
+        }
+
+        const existFilm = await Comments.findOne({
+            filmId
+        })
+
+        if (existFilm) {
+
+            existFilm.comments.push(newComment)
+            await existFilm.save()
+
+            res.status(200).json({
+                message: "El comentario ha sido guardado con éxito"
+            })
+
+        } else {
+
+            const newDocFilmComment = new Comments({
+                filmId: filmId,
+                comments: [newComment]
+            })
+
+            await newDocFilmComment.save()
+
+            return res.status(200).json({
+                message: "Documento creado y comentario guardado"
+            })
+
+        }
+    } catch (error) {
+
+        console.log("Error al guardar el comentario en la BBDD", error)
+
+        return res.status(500).json({
+            message: "Error al guardar el comentario en la BBDD",
+            error: error.message
+        })
+    }
+}
+
 
 module.exports = {
     loadFilms,
     filmsByGenre,
     searchFilm,
-    oneFilm
+    oneFilm,
+    addComment
 }

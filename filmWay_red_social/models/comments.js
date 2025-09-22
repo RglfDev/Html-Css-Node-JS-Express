@@ -9,7 +9,7 @@ const commentSchema = new Schema({
         require: true
     },
     comments: [{
-        idUser: {
+        userNick: {
             type: String,
             require: true
         },
