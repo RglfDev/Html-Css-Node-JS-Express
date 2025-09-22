@@ -36,6 +36,9 @@ const userSchema = Schema({ //Comenzamos la creación del esquema con los campos
         default: "https://cdn-icons-png.freepik.com/256/9365/9365334.png"
 
     },
+    films: [{
+        type: String
+    }],
     registerDate: { //Fecha de alta del usuario en la base de datos
         type: Date,
         default: Date.now

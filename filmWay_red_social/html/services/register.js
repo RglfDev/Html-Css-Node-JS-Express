@@ -45,6 +45,7 @@ btnRegister.addEventListener("click", async () => { //Evento de click del botón
                 nickName: nick,
                 password: pass,
                 email: email,
+                films: []
             }
 
 

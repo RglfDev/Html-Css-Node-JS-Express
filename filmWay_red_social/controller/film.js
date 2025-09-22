@@ -114,9 +114,37 @@ async function searchFilm(req, res) {
     }
 }
 
+async function oneFilm(req, res) {
+
+    try {
+
+        const filmId = req.params.id
+
+        const response = await fetch(`https://api.themoviedb.org/3/movie/${filmId}?api_key=${apiKey}&language=es-ES`)
+
+        if (!response.ok) {
+            return res.status(response.status).json({
+                error: "Error al obtener la película"
+            });
+        }
+
+        const data = await response.json()
+
+        res.json(data)
+
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({
+            error: "Error en el servidor"
+        });
+    }
+
+}
+
 
 module.exports = {
     loadFilms,
     filmsByGenre,
-    searchFilm
+    searchFilm,
+    oneFilm
 }

@@ -42,6 +42,8 @@ async function connection() {
     }
     const data = await res.json()
 
+    const favoriteFilms = await getUserFavorites()
+
     if (!data.results || data.results.length === 0) {
         console.warn(" No se recibieron películas");
         return;
@@ -58,7 +60,7 @@ async function connection() {
         }
 
         filmList.push(filmObject)
-        createFragment(filmObject)
+        createFragment(filmObject, favoriteFilms)
 
     })
 
@@ -66,18 +68,47 @@ async function connection() {
 
 }
 
-function createFragment(filmObject) {
+async function createFragment(filmObject, favoriteFilms) {
     const clone = template.content.cloneNode(true)
     const card = clone.querySelector(".filmContainer")
     const fTitle = clone.querySelector(".filmTitle")
     const fImg = clone.querySelector(".filmImg")
     const fComments = clone.querySelector(".filmComments")
     const fAddBtn = clone.querySelector(".filmAddButton")
+    const ffilmBtn = clone.querySelector(".filmButton")
 
     fComments.textContent = "Comentarios : 0"
-
     fTitle.textContent = filmObject.title
     fImg.setAttribute("src", `https://image.tmdb.org/t/p/w500${filmObject.img}`)
+
+    fAddBtn.dataset.filmId = filmObject.id
+
+    ffilmBtn.dataset.filmId = filmObject.id
+
+    ffilmBtn.addEventListener("click", (e) => {
+        const id = e.currentTarget.dataset.filmId
+        window.location.href = `/oneFilm.html?id=${id}`
+    })
+
+
+
+    const isFavorite = favoriteFilms.some(favId => favId == filmObject.id)
+
+    if (isFavorite) {
+
+        fAddBtn.textContent = "En tu lista"
+        fAddBtn.disabled = true
+
+    } else {
+
+        fAddBtn.addEventListener("click", (e) => {
+
+            const filmIdBtn = e.target.dataset.filmId
+            addFilmToUser(filmIdBtn, fAddBtn)
+
+        })
+
+    }
 
     fragment.appendChild(clone)
 }
@@ -114,6 +145,8 @@ async function searchAllPages(query) {
     let page = 1
     let totalPages = 1
 
+    const favoriteFilms = await getUserFavorites()
+
     do {
         const res = await fetch(`/api/films/search?query=${encodeURIComponent(query)}&page=${page}`, {
             headers: {
@@ -140,7 +173,7 @@ async function searchAllPages(query) {
             img: film.poster_path,
             title: film.title
         }
-        createFragment(filmObject)
+        createFragment(filmObject, favoriteFilms)
     })
 
     main.appendChild(fragment)
@@ -153,6 +186,56 @@ btnSearch.addEventListener("click", () => {
         searchAllPages(value)
     }
 })
+
+
+async function addFilmToUser(filmId, btn) {
+
+    const token = getToken()
+
+    try {
+        const res = await fetch("/api/users/addFilm", {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`
+            },
+            body: JSON.stringify({
+                filmId
+            })
+        })
+
+        const data = await res.json()
+
+        btn.textContent = "En tu lista"
+        btn.disabled = true
+
+        console.log(data.message)
+
+    } catch (error) {
+        console.log("Error al intentar añadir la película a favoritos")
+    }
+
+
+}
+
+async function getUserFavorites() {
+    const token = getToken()
+    try {
+        const res = await fetch("/api/users/fav", {
+            headers: {
+                "Authorization": `Bearer ${token}`
+            }
+        })
+        const data = await res.json()
+        return data.films || []
+    } catch (error) {
+        console.log("Error al intentar obtener favoritos del usuario")
+        return []
+    }
+}
+
+
+
 
 
 connection()

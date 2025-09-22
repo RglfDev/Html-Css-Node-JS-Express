@@ -56,7 +56,61 @@ const registerUser = async (req, res) => { //Función de registro de usuario en 
 }
 
 
-/* const loginUser = async(req,res) */
+const addFilmToFavorites = async (req, res) => {
+
+    try {
+        const {
+            filmId
+        } = req.body
+
+        const userId = req.user.id
+
+        await User.findByIdAndUpdate(userId, {
+            $addToSet: {
+                films: filmId
+            }
+        })
+
+        res.json({
+            message: "Película añadida a favoritos correctamente"
+        })
 
 
-module.exports = registerUser //Exportamos en controlador para poder utilizarlo desde el router
+    } catch (error) {
+        console.log("Error en el controlador de añadir a favoritos")
+    }
+}
+
+async function findUserFav(req, res) {
+
+    try {
+        const userId = req.user.id;
+        const user = await User.findById(userId).select("films");
+
+        if (!user) {
+            return res.status(404).json({
+                message: "Usuario no encontrado"
+            });
+        }
+
+        res.json({
+            films: user.films
+        });
+
+
+
+
+    } catch (error) {
+        console.log("Error en el controlador de añadir a favoritos")
+    }
+}
+
+
+
+
+
+module.exports = {
+    registerUser,
+    addFilmToFavorites,
+    findUserFav
+}
