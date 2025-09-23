@@ -25,27 +25,58 @@
             </nav>
         </div>
     </header>
-    <container class="selectorContainer">
-        <div class="selectors">
-            <div class="searchInput">
-                <label for="inputFilm">Buscar película</label>
-                <input id="inputFilm" class="inputFilm" type="text">
+    <div class="actualPage">
+        <h1>Mi perfíl</h1>
+    </div>
+    <container class="main">
+
+        <container class="infoContainer">
+
+            <div class="divName data">
+                <h3 class="userNameTitle dataTitles">Nombre completo </h3>
+                <p class="userName dataContent">Rubén Gómez-Lobo</p>
             </div>
-            <div class="actualPage">
-                <h1>Mi perfíl</h1>
+
+            <div class="divNick data">
+                <h3 class="nickTitle dataTitles">Nickname </h3>
+                <p class="userNick dataContent">Lobokronos</p>
             </div>
-            <div class="filerSelector">
-                <label for="typeSelector">Filtrar</label>
-                <select id="typeSelector" class="typeSelector" name="">
-                    <option value="recent">Más reciente</option>
-                    <option value="recent">Mejor valorados</option>
-                    <option value="recent">Más reseñas</option>
+
+            <div class="divEmail data">
+                <h3 class="emailTitle dataTitles">Email </h3>
+                <p class="userEmail dataContent">ruben@tacata.com</p>
             </div>
-        </div>
+
+            <div class="divDate data">
+                <h3 class="dateTitle dataTitles">Fecha de alta </h3>
+                <p class="userDate dataContent">10/01/2025</p>
+            </div>
+
+        </container>
+
+        <container class="favFilmsContainer">
+
+            <h2 class="favTitle">Mis pelis favoritas</h2>
+
+            <div class="containerCards">
+                <template class="templateCards">
+
+                    <container class="filmContainer">
+
+                        <p id="filmTitle" class="filmTitle"><b>Título</b></p>
+                        <div class="imageContainer">
+                            <button id="filmButton" class="filmButton">
+                                <img id="filmImg" class="filmImg" src="./images/sw-poster_.jpg" alt="">
+                            </button>
+                        </div>
+                    </container>
+                </template>
+            </div>
+
+        </container>
+
     </container>
-
-    <container class="main"></container>
-
+    <script src="services/profile.js"></script>
 </body>
 
 </html>

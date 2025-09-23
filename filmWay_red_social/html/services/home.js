@@ -40,6 +40,7 @@ async function connection() {
         window.location.href = "/login.html";
         return;
     }
+
     const data = await res.json()
 
     const favoriteFilms = await getUserFavorites()

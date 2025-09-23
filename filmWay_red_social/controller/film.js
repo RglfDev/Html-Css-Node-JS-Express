@@ -175,7 +175,8 @@ async function addComment(req, res) {
             await existFilm.save()
 
             res.status(200).json({
-                message: "El comentario ha sido guardado con éxito"
+                message: "El comentario ha sido guardado con éxito",
+                comment: newComment
             })
 
         } else {
@@ -203,11 +204,59 @@ async function addComment(req, res) {
     }
 }
 
+async function showComments(req, res) {
+
+    try {
+
+        const {
+            filmId
+        } = req.params;
+
+        if (!filmId) {
+            res.status(400).json({
+                message: "No se ha encontrado un ID de pelicula en la request"
+            })
+        }
+
+        const existFilm = await Comments.findOne({
+            filmId
+        })
+
+        if (existFilm) {
+
+            return res.status(200).json({
+                message: "Pelicula encontrada",
+                comments: existFilm.comments
+            })
+
+        } else {
+
+            return res.status(500).json({
+                message: "No se encuentran comentarios con ese ID de pelicula"
+            })
+
+        }
+
+
+
+
+    } catch (error) {
+        return res.status(500).json({
+            message: "Error del servidor al buscar ID para comentarios",
+            error: error.message
+        })
+    }
+
+}
+
+
+
 
 module.exports = {
     loadFilms,
     filmsByGenre,
     searchFilm,
     oneFilm,
-    addComment
+    addComment,
+    showComments
 }

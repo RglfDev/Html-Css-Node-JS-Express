@@ -3,6 +3,9 @@ const id = params.get("id")
 const commentText = document.querySelector(".commentText")
 const btnSubmit = document.querySelector(".submit")
 const warningText = document.querySelector(".warningText")
+const template = document.querySelector(".commentTemplate")
+const fragment = document.createDocumentFragment()
+
 
 
 function getToken() {
@@ -12,7 +15,6 @@ function getToken() {
     }
     return token;
 }
-
 
 async function showOneFilm() {
 
@@ -72,9 +74,15 @@ async function saveComment(commentContent, id) {
             })
 
             if (!res.ok) {
+
                 console.error("Error al guardar comentario");
+
             } else {
+
                 console.log("Comentario guardado con éxito");
+
+                const data = await res.json()
+                buildComments(data.comment)
                 commentText.value = ""
             }
 
@@ -86,5 +94,51 @@ async function saveComment(commentContent, id) {
     }
 }
 
+async function showComments() {
+
+    const token = getToken()
+
+    const res = await fetch(`/api/films/showComments/${id}`, {
+        headers: {
+            "Authorization": `Bearer ${token}`
+        }
+    })
+
+    const data = await res.json()
+
+    console.log(data.comments)
+
+    data.comments.forEach(comment => {
+
+        buildComments(comment)
+
+    });
+
+
+
+}
+
+function buildComments(comment) {
+
+    const clone = template.content.cloneNode(true)
+    const userName = clone.querySelector(".userName")
+    const commentContent = clone.querySelector(".commentContent")
+    const dateComment = clone.querySelector(".dateComment")
+
+    userName.textContent = comment.userNick
+    commentContent.textContent = comment.userComment
+
+    const d = new Date(comment.dateComment)
+    const day = d.getDate()
+    const monthNames = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"]
+    const month = monthNames[d.getMonth()]
+    const year = d.getFullYear()
+
+    dateComment.textContent = `Publicado el ${day} de ${month} de ${year}`
+
+    document.querySelector(".comments").appendChild(clone)
+}
+
 
 showOneFilm()
+showComments()

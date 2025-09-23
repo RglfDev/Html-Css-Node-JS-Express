@@ -5,7 +5,8 @@ const {
     filmsByGenre,
     searchFilm,
     oneFilm,
-    addComment
+    addComment,
+    showComments
 } = require("../controller/film")
 const router = express.Router()
 
@@ -16,6 +17,7 @@ router.get("/genre", auth, filmsByGenre)
 router.get("/search", auth, searchFilm)
 router.get("/oneFilm/:id", auth, oneFilm)
 router.post("/addComment", auth, addComment)
+router.get("/showComments/:filmId", auth, showComments)
 
 
 module.exports = router

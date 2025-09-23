@@ -1,5 +1,8 @@
+const config = require("config")
 const User = require("../models/user") //Requerimos el modelo de la base de datos 
 const bcrypt = require("bcrypt") //Requerimos "bcrypt" para poder cifrar las contraseñas
+
+const apiKey = config.get("apiKey.KEY")
 
 
 const registerUser = async (req, res) => { //Función de registro de usuario en la base de datos
@@ -105,6 +108,68 @@ async function findUserFav(req, res) {
     }
 }
 
+async function showUserData(req, res) {
+
+    const userId = req.user.id
+
+    try {
+        const userData = await User.findOne({
+            _id: userId
+        })
+
+        if (!userData) {
+            return res.status(404).json({
+                message: "No se ha encontrado ningun usuario con ese ID"
+            })
+        }
+
+        return res.status(200).json({
+            message: "Usuario encontrado, devolviendo datos...",
+            userData
+        })
+
+
+    } catch (error) {
+
+        return res.status(500).json({
+            message: "Error al conectar con el servidor para los datos de perfíl",
+            error: error.message
+
+        })
+
+    }
+}
+
+async function showFavs(req, res) {
+
+    const filmId = req.params.id
+
+    try {
+
+
+
+        const response = await fetch(`https://api.themoviedb.org/3/movie/${filmId}?api_key=${apiKey}&language=es-ES`);
+
+        if (!response.ok) {
+            return res.status(404).json({
+                message: "No se han encontrado peliculas con esos datos"
+            })
+        }
+
+        const filmData = await response.json();
+        res.json(filmData);
+
+    } catch (error) {
+        return res.status(500).json({
+            message: "Error del servidor",
+            error: error.message
+        })
+    }
+
+}
+
+
+
 
 
 
@@ -112,5 +177,7 @@ async function findUserFav(req, res) {
 module.exports = {
     registerUser,
     addFilmToFavorites,
-    findUserFav
+    findUserFav,
+    showUserData,
+    showFavs
 }
