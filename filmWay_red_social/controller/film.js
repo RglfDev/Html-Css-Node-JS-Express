@@ -231,10 +231,10 @@ async function showComments(req, res) {
 
         } else {
 
-            return res.status(500).json({
-                message: "No se encuentran comentarios con ese ID de pelicula"
-            })
-
+            return res.status(200).json({
+                message: "No hay comentarios para esta película",
+                comments: []
+            });
         }
 
 

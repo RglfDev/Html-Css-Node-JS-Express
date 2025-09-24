@@ -1,18 +1,19 @@
+import {
+    logOutUser,
+    getToken
+}
+from "../services/token_services.js"
+
 const userNick = document.querySelector(".userNick")
 const userName = document.querySelector(".userName")
 const userEmail = document.querySelector(".userEmail")
 const userDate = document.querySelector(".userDate")
 const templateCards = document.querySelector(".templateCards")
 const containerCards = document.querySelector(".containerCards")
+const btnLogout = document.querySelector("#btnLogout")
 
 
-function getToken() {
-    const token = localStorage.getItem("token");
-    if (!token) {
-        window.location.href = "/login.html";
-    }
-    return token;
-}
+
 
 async function showUserData() {
 
@@ -52,6 +53,12 @@ async function showFavs(arrayId) {
 
     containerCards.innerHTML = ""
 
+    if (!arrayId || arrayId.length === 0) {
+        containerCards.innerHTML = "<h3>No tienes películas favoritas todavía</h3>"
+
+        return
+    }
+
     for (const item of arrayId) {
 
 
@@ -70,6 +77,7 @@ async function showFavs(arrayId) {
         const filmImg = clone.querySelector(".filmImg")
 
         filmTitle.textContent = data.title
+        filmTitle.style.fontWeight = "bold"
         filmImg.setAttribute("src", `https://image.tmdb.org/t/p/w500${data.poster_path}`)
 
         filmButton.dataset.filmId = data.id
@@ -83,5 +91,12 @@ async function showFavs(arrayId) {
     }
 
 }
+
+
+btnLogout.addEventListener("click", (e) => {
+    e.preventDefault();
+    logOutUser();
+});
+
 
 showUserData()

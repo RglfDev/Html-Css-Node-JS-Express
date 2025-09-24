@@ -116,6 +116,7 @@ body{
 }
 .filmTitle{
     text-align: center;
+    padding: 5px;
 }
 
 .imageContainer{
@@ -136,4 +137,9 @@ body{
     flex-direction: column;
     align-items: center;
     gap: 8px;
+}
+
+.filmAddButton{
+    height: 30px;
+    padding: 5px;
 }

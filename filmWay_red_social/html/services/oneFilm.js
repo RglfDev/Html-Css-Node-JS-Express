@@ -1,3 +1,9 @@
+import {
+    logOutUser,
+    getToken
+}
+from "../services/token_services.js"
+
 const params = new URLSearchParams(window.location.search)
 const id = params.get("id")
 const commentText = document.querySelector(".commentText")
@@ -8,13 +14,7 @@ const fragment = document.createDocumentFragment()
 
 
 
-function getToken() {
-    const token = localStorage.getItem("token");
-    if (!token) {
-        window.location.href = "/login.html";
-    }
-    return token;
-}
+
 
 async function showOneFilm() {
 
@@ -108,7 +108,9 @@ async function showComments() {
 
     console.log(data.comments)
 
-    data.comments.forEach(comment => {
+    const comments = data.comments || []
+
+    comments.forEach(comment => {
 
         buildComments(comment)
 
@@ -139,6 +141,10 @@ function buildComments(comment) {
     document.querySelector(".comments").appendChild(clone)
 }
 
+btnLogout.addEventListener("click", (e) => {
+    e.preventDefault();
+    logOutUser();
+});
 
 showOneFilm()
 showComments()

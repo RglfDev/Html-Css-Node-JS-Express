@@ -1,22 +1,23 @@
+import {
+    logOutUser,
+    getToken
+}
+from "../services/token_services.js"
+
 const template = document.querySelector(".template")
 const fragment = document.createDocumentFragment()
 const main = document.querySelector(".main")
 const typeSelector = document.querySelector(".typeSelector")
 const inputFilm = document.querySelector(".inputFilm")
 const btnSearch = document.querySelector(".btnSearch")
+const btnLogout = document.querySelector("#btnLogout")
+
 
 
 let url = `/api/films/popular?page=1`
 
 const filmList = []
 
-function getToken() {
-    const token = localStorage.getItem("token");
-    if (!token) {
-        window.location.href = "/login.html";
-    }
-    return token;
-}
 
 async function connection() {
 
@@ -46,7 +47,8 @@ async function connection() {
     const favoriteFilms = await getUserFavorites()
 
     if (!data.results || data.results.length === 0) {
-        console.warn(" No se recibieron películas");
+        console.warn(" No se recibieron películas")
+        main.innerHTML = "<h1>Sin resultados</h1>"
         return;
     }
 
@@ -78,8 +80,9 @@ async function createFragment(filmObject, favoriteFilms) {
     const fAddBtn = clone.querySelector(".filmAddButton")
     const ffilmBtn = clone.querySelector(".filmButton")
 
-    fComments.textContent = "Comentarios : 0"
+
     fTitle.textContent = filmObject.title
+    fTitle.style.fontWeight = "bold"
     fImg.setAttribute("src", `https://image.tmdb.org/t/p/w500${filmObject.img}`)
 
     fAddBtn.dataset.filmId = filmObject.id
@@ -168,6 +171,11 @@ async function searchAllPages(query) {
         page++
     } while (page <= totalPages)
 
+    if (allResults.length === 0) {
+        main.innerHTML = "<h2>Sin resultados</h2>"
+        return
+    }
+
     allResults.forEach(film => {
         const filmObject = {
             id: film.id,
@@ -236,7 +244,8 @@ async function getUserFavorites() {
 }
 
 
-
-
-
+btnLogout.addEventListener("click", (e) => {
+    e.preventDefault();
+    logOutUser();
+});
 connection()

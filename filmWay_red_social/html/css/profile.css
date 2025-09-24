@@ -26,7 +26,7 @@ body{
 }
 
 .menu {
-    display: flex;
+   display: flex;
     width: 100%;
     background-image: url("../images/pulp-title.jpg");
     background-size: cover;
@@ -37,6 +37,11 @@ body{
     background-color: rgba(0,0,0,0.4); 
     background-blend-mode: darken;
     
+}
+
+.nav {
+    display: flex;
+    width: 100%;
 }
 
 .btn {
@@ -77,6 +82,7 @@ body{
     align-items: center;
     flex-wrap: wrap;
     gap: 50px;
+    padding: 2rem;
 }
 
 .infoContainer{
@@ -139,6 +145,7 @@ body{
 }
 .filmTitle{
     text-align: center;
+    padding: 5px;
 }
 
 .imageContainer{
