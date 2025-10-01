@@ -19,16 +19,17 @@ El proyecto está desarrollado con **HTML, CSS, JavaScript (ES Modules)** en el 
 ## 🖼️ Capturas de pantalla
 
 ### Pantalla de Login
-[![Login]()]https://github.com/RglfDev/Html-Css-Node-JS-Express/blob/main/filmWay_red_social/filmWay%20images/localhost_3000_login.html.png
+![Login](https://github.com/RglfDev/Html-Css-Node-JS-Express/blob/main/filmWay_red_social/filmWay%20images/localhost_3000_login.html.png)
 
 ### Pantalla de Inicio
-[![Home]()](https://github.com/RglfDev/Html-Css-Node-JS-Express/blob/main/filmWay_red_social/filmWay%20images/localhost_3000_home.html%20(1).png)
+![Home](https://github.com/RglfDev/Html-Css-Node-JS-Express/blob/main/filmWay_red_social/filmWay%20images/localhost_3000_home.html%20(1).png)
 
 ### Detalle de Película
-[![Detalle película]()](https://github.com/RglfDev/Html-Css-Node-JS-Express/blob/main/filmWay_red_social/filmWay%20images/localhost_3000_oneFilm.html_id%3D617126%20(2).png)
+![Detalle película](https://github.com/RglfDev/Html-Css-Node-JS-Express/blob/main/filmWay_red_social/filmWay%20images/localhost_3000_oneFilm.html_id%3D617126%20(2).png)
 
 ### Perfil de Usuario
-[![Perfil usuario]()](https://github.com/RglfDev/Html-Css-Node-JS-Express/blob/main/filmWay_red_social/filmWay%20images/localhost_3000_profile.html%20(2).png)
+![Perfil usuario](https://github.com/RglfDev/Html-Css-Node-JS-Express/blob/main/filmWay_red_social/filmWay%20images/localhost_3000_profile.html%20(2).png)
+
 
 ---
 
